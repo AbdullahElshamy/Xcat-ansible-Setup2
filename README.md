@@ -6,8 +6,9 @@
 This project automates the setup and configuration of an xCAT Management Node on an Ubuntu VM using Ansible.  
 It includes playbooks and roles for installing xCAT
 
-
 📂 Project Structure
+
+```
 ansible/
 ├── inventory.ini
 ├── install-xcat.yml
@@ -27,7 +28,7 @@ ansible/
     └── finalize_install/
         ├── tasks/main.yml
         └── vars/main.yml
-
+```
 🛠 Roles Overview
 
 1️⃣ prepare_environment
@@ -92,5 +93,14 @@ Installs the xcat package from the configured repositories.
 cd ansible-task
 2-Run the playbook
 ansible-playbook -i inventory.ini install-xcat.yml
-![ansible playbook running](images/Screenshot 2025-08-10 142100)
+
+![Running playbook1](/images/Screenshot%202025-08-10%20142100.png)
+
+![alt text](/images/Screenshot%202025-08-11%20230924.png/)
+
+![alt text](/images/Screenshot%202025-08-11%20231012.png)
+
+3-Checking the xcat version
+lsxcatd -a
+![alt text](/images/Screenshot%202025-08-11%20232100.png)
 
