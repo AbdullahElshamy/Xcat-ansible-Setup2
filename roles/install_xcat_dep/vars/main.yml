@@ -1,0 +1,3 @@
+---
+xcat_dep_url: "https://xcat.org/files/xcat/xcat-dep/2.x_Ubuntu/xcat-dep-2.17.0-ubuntu.tar.bz2"
+xcat_dep_archive: "{{ xcat_work_dir }}/xcat-dep-2.17.0-ubuntu.tar.bz2"

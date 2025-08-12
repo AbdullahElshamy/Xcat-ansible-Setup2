@@ -1,0 +1,24 @@
+---
+- name: Download xcat-dep archive
+  get_url:
+    url: "{{ xcat_dep_url }}"
+    dest: "{{ xcat_dep_archive }}"
+
+- name: Extract xcat-dep archive
+  unarchive:
+    src: "{{ xcat_dep_archive }}"
+    dest: "{{ xcat_work_dir }}"
+    remote_src: yes
+    extra_opts: [--no-same-owner]
+
+- name: Make mklocalrepo.sh executable
+  file:
+    path: "{{ xcat_work_dir }}/xcat-dep/mklocalrepo.sh"
+    mode: '0755'
+  become: yes
+
+- name: Create local repo for xcat-dep
+  shell: bash mklocalrepo.sh
+  args:
+    chdir: "{{ xcat_work_dir }}/xcat-dep"
+  become: yes

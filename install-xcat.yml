@@ -1,0 +1,10 @@
+---
+- name: Install xCAT on management node
+  hosts: management_node
+  become: yes
+  roles:
+    - prepare_environment
+    - install_xcat_core
+    - install_xcat_dep
+    - configure_repos
+    - finalize_install

@@ -1,0 +1,3 @@
+---
+xcat_core_url: "https://xcat.org/files/xcat/xcat-core/2.17.x_Ubuntu/xcat-core/xcat-core-2.17.0-ubuntu.tar.bz2"
+xcat_core_archive: "{{ xcat_work_dir }}/xcat-core-2.17.0-ubuntu.tar.bz2"

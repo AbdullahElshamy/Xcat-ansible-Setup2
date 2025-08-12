@@ -1,0 +1,42 @@
+---
+- name: Download xCAT apt key
+  ansible.builtin.get_url:
+    url: "http://xcat.org/files/xcat/repos/apt/apt.key"
+    dest: "/tmp/xcat.key"
+    mode: '0644'
+
+- name: Add xCAT apt key
+  command: apt-key add /tmp/xcat.key
+  become: yes
+
+- name: Add trusted=yes to xcat-core.list
+  replace:
+    path: /etc/apt/sources.list.d/xcat-core.list
+    regexp: 'deb \['
+    replace: 'deb [trusted=yes '
+  become: yes
+- name: Add trusted=yes to xcat-dep.list
+  replace:
+    path: /etc/apt/sources.list.d/xcat-dep.list
+    regexp: 'deb \['
+    replace: 'deb [trusted=yes '
+  become: yes
+
+- name: Install software-properties-common
+  apt:
+    name: software-properties-common
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Add Ubuntu repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop:
+    - "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main"
+    - "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main"
+    - "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe"
+    - "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates universe"
+  become: yes
+

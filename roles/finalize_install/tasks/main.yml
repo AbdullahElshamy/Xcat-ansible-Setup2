@@ -1,0 +1,23 @@
+---
+- name: Clean package cache
+  command: apt-get clean
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install xCAT
+  apt:
+    name: xcat
+    state: present
+  become: yes
+- name: Ensure xCAT environment variables are loaded for all users
+  lineinfile:
+    path: /etc/bash.bashrc
+    line: 'source /etc/profile.d/xcat.sh'
+    create: yes
+    state: present
+  become: yes
+

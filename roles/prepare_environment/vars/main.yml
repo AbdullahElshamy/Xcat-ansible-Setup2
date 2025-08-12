@@ -1,0 +1,2 @@
+---
+xcat_work_dir: "/home/{{ ansible_user }}/xcat"

@@ -1,0 +1,5 @@
+---
+- name: Create xCAT working directory
+  file:
+    path: "{{ xcat_work_dir }}"
+    state: directory

@@ -1,0 +1,24 @@
+---
+- name: Download xcat-core archive
+  get_url:
+    url: "{{ xcat_core_url }}"
+    dest: "{{ xcat_core_archive }}"
+
+- name: Extract xcat-core archive
+  unarchive:
+    src: "{{ xcat_core_archive }}"
+    dest: "{{ xcat_work_dir }}"
+    remote_src: yes
+    extra_opts: [--no-same-owner]
+
+- name: Make mklocalrepo.sh executable
+  file:
+    path: "{{ xcat_work_dir }}/xcat-core/mklocalrepo.sh"
+    mode: '0755'
+  become: yes
+
+- name: Create local repo for xcat-core
+  shell: bash mklocalrepo.sh
+  args:
+    chdir: "{{ xcat_work_dir }}/xcat-core"
+  become: yes
