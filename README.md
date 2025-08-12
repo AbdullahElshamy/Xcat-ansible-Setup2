@@ -90,10 +90,13 @@ Installs the xcat package from the configured repositories.
 
 ▶ Running the Playbook
 1-Go to the project directory
+```
 cd ansible-task
+```
 2-Run the playbook
+```
 ansible-playbook -i inventory.ini install-xcat.yml
-
+```
 ![Running playbook1](/images/Screenshot%202025-08-10%20142100.png)
 
 ![alt text](/images/Screenshot%202025-08-11%20230924.png/)
@@ -101,6 +104,7 @@ ansible-playbook -i inventory.ini install-xcat.yml
 ![alt text](/images/Screenshot%202025-08-11%20231012.png)
 
 3-Checking the xcat version
+```
 lsxcatd -a
-![alt text](/images/Screenshot%202025-08-11%20232100.png)
+![a```lt text](/images/Screenshot%202025-08-11%20232100.png)
 
