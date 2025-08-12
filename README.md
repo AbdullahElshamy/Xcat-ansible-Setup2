@@ -106,5 +106,6 @@ ansible-playbook -i inventory.ini install-xcat.yml
 3-Checking the xcat version
 ```
 lsxcatd -a
-![a```lt text](/images/Screenshot%202025-08-11%20232100.png)
+```
+![alt text](/images/Screenshot%202025-08-11%20232100.png)
 
